@@ -1003,7 +1003,7 @@ async function sendToAngie(userText) {
     addMessage(reply, 'angie');
   } catch(e) {
     hideTyping();
-    addMessage("Sorry, I'm having a little trouble connecting. Please call us directly at (561) 255-8506!", 'angie');
+    addMessage("Debug error: " + e.message, 'angie');
   }
 
   isTyping = false;
