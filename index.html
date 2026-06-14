@@ -565,5 +565,524 @@
   <p style="margin-top:16px;">© 2026 Super Fast Mobile Tires LLC. All rights reserved.</p>
 </footer>
 
+<!-- ANGIE AI CHAT WIDGET -->
+<style>
+  #angie-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    font-family: 'Barlow', sans-serif;
+  }
+  #angie-widget.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #angie-header {
+    background: #0a0a0a;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  #angie-header-left { display: flex; align-items: center; gap: 10px; }
+  .angie-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #D72B2B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .angie-name {
+    color: #fff;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .angie-status {
+    font-size: 0.75rem;
+    color: #4ade80;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  #angie-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  #angie-close:hover { color: #fff; }
+  #angie-messages {
+    padding: 16px;
+    max-height: 280px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f9f9f9;
+  }
+  .msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+  .msg.angie {
+    background: #fff;
+    color: #1a1a1a;
+    border: 1px solid #e5e5e5;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .msg.user {
+    background: #D72B2B;
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 6px 0;
+  }
+  .typing-dots span {
+    width: 7px;
+    height: 7px;
+    background: #bbb;
+    border-radius: 50%;
+    animation: bounce 1.2s infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+  }
+  #angie-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px 14px;
+    border-top: 1px solid #eee;
+    background: #fff;
+  }
+  #angie-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 9px 14px;
+    font-size: 0.88rem;
+    font-family: 'Barlow', sans-serif;
+    outline: none;
+    color: #1a1a1a;
+    transition: border-color 0.2s;
+  }
+  #angie-input:focus { border-color: #D72B2B; }
+  #angie-send {
+    background: #D72B2B;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  #angie-send:hover { background: #a81f1f; }
+  #angie-minimized {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: #0a0a0a;
+    color: #fff;
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    transition: transform 0.2s;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+  }
+  #angie-minimized:hover { transform: translateY(-2px); }
+  .angie-dot {
+    width: 9px;
+    height: 9px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+</style>
+
+<!-- Minimized state -->
+<div id="angie-minimized" onclick="openAngie()">
+  <div class="angie-dot"></div>
+  Angie — Ask Me Anything
+</div>
+
+<!-- Full chat widget -->
+<div id="angie-widget">
+  <div id="angie-header">
+    <div id="angie-header-left">
+      <div class="angie-avatar">A</div>
+      <div>
+        <div class="angie-name">Angie</div>
+        <div class="angie-status">● Online now</div>
+      </div>
+    </div>
+    <button id="angie-close" onclick="minimizeAngie()" aria-label="Minimize chat">✕</button>
+  </div>
+  <div id="angie-messages"></div>
+  <div id="angie-input-row">
+    <button id="angie-mic" onclick="toggleMic()" title="Tap to speak" aria-label="Voice input" style="background:#222;color:#fff;border:none;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;flex-shrink:0;transition:background 0.2s;">🎤</button>
+    <input id="angie-input" type="text" placeholder="Type or tap mic to speak..." autocomplete="off" />
+    <button id="angie-send" aria-label="Send message">➤</button>
+  </div>
+</div>
+
+<script>
+const SYSTEM_PROMPT = `You are Angie, an energetic, professional AI assistant for Super Fast Mobile Tires LLC. You help website visitors get fast mobile tire service in West Palm Beach and all of Palm Beach County, FL.
+
+Your personality: Warm, fast, confident, reassuring. Short clear sentences. Natural and human.
+
+Your job: Help visitors understand services, answer questions, and collect dispatch info if they need service NOW.
+
+If they need service, collect in this order (one question at a time):
+1. Individual or business?
+2. Full name / company name
+3. Best callback phone number
+4. Vehicle year, make, model
+5. Tire size (look up OEM size from vehicle info, confirm with them)
+6. How many tires
+7. Exact location (address or intersection, and environment - roadside, parking lot, home, etc.)
+8. Now or schedule later?
+
+Rules:
+- NEVER quote prices - say "The technician will give you an exact quote on arrival"
+- ETA is always 25-30 minutes
+- Ask only ONE question at a time
+- If they ask about services: Mobile tire change, flat repair, used tire install, new tire install, jump start ($50), lockout ($70), gas delivery ($50 + gas), roadside assistance
+- Always be warm and reassuring
+- Keep responses SHORT - 1-3 sentences max
+- If they seem stressed or stranded, acknowledge that first before asking questions
+- End dispatch with a natural recap of all details collected
+
+Start by greeting them warmly and asking what you can help with today.`;
+
+let messages = [];
+let isTyping = false;
+let isListening = false;
+let recognition = null;
+const ELEVENLABS_API_KEY = 'YOUR_ELEVENLABS_API_KEY';
+const ELEVENLABS_VOICE_ID = 'EXAVITQu4vr4xnSDxMaL'; // "Sarah" — warm, natural, American female
+
+let audioQueue = [];
+let isPlayingAudio = false;
+let selectedVoice = null;
+
+function loadVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  selectedVoice =
+    voices.find(v => v.name.includes('Samantha')) ||
+    voices.find(v => v.name.includes('Google US English Female')) ||
+    voices.find(v => v.name.includes('Zira')) ||
+    voices.find(v => v.lang === 'en-US') ||
+    voices[0];
+}
+window.speechSynthesis.onvoiceschanged = loadVoice;
+loadVoice();
+
+function fallbackSpeak(text) {
+  window.speechSynthesis.cancel();
+  const clean = text.replace(/[*_~`#]/g, '').trim();
+  const utter = new SpeechSynthesisUtterance(clean);
+  utter.voice = selectedVoice;
+  utter.rate = 1.05;
+  utter.pitch = 1.1;
+  utter.volume = 1;
+  window.speechSynthesis.speak(utter);
+}
+
+async function playNextInQueue() {
+  if (isPlayingAudio || audioQueue.length === 0) return;
+  isPlayingAudio = true;
+  const audioUrl = audioQueue.shift();
+  const audio = new Audio(audioUrl);
+  audio.onended = () => { isPlayingAudio = false; URL.revokeObjectURL(audioUrl); playNextInQueue(); };
+  audio.onerror = () => { isPlayingAudio = false; playNextInQueue(); };
+  try { await audio.play(); } catch(e) { isPlayingAudio = false; playNextInQueue(); }
+}
+
+async function speak(text) {
+  const clean = text.replace(/[*_~`#]/g, '').trim();
+  if (!clean) return;
+
+  if (!ELEVENLABS_API_KEY || ELEVENLABS_API_KEY === 'YOUR_ELEVENLABS_API_KEY') {
+    fallbackSpeak(clean);
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${ELEVENLABS_VOICE_ID}`, {
+      method: 'POST',
+      headers: {
+        'xi-api-key': ELEVENLABS_API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: clean,
+        model_id: 'eleven_turbo_v2',
+        voice_settings: {
+          stability: 0.4,
+          similarity_boost: 0.85,
+          style: 0.3,
+          use_speaker_boost: true
+        }
+      })
+    });
+    if (!res.ok) { fallbackSpeak(clean); return; }
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    audioQueue.push(url);
+    playNextInQueue();
+  } catch(e) {
+    fallbackSpeak(clean);
+  }
+}
+
+function showMicStatus(msg, color) {
+  const input = document.getElementById('angie-input');
+  if (input) {
+    input.placeholder = msg;
+    input.style.borderColor = color || '#ddd';
+    setTimeout(() => {
+      input.placeholder = 'Type or tap mic to speak...';
+      input.style.borderColor = '#ddd';
+    }, 3500);
+  }
+}
+
+function setupSpeechRecognition() {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    showMicStatus('Voice not supported — please type', '#D72B2B');
+    return;
+  }
+  recognition = new SR();
+  recognition.continuous = false;
+  recognition.interimResults = false;
+  recognition.lang = 'en-US';
+  recognition.onresult = (e) => {
+    const transcript = e.results[0][0].transcript.trim();
+    if (transcript) {
+      stopListening();
+      sendToAngie(transcript);
+    }
+  };
+  recognition.onend = () => { isListening = false; updateMicBtn(); };
+  recognition.onerror = (e) => {
+    isListening = false;
+    updateMicBtn();
+    if (e.error === 'not-allowed' || e.error === 'permission-denied') {
+      showMicStatus('Mic blocked — please type your message', '#D72B2B');
+      addMessage("No worries — I can't access your mic right now. Just type your message below and I'll take care of you!", 'angie');
+    } else if (e.error === 'no-speech') {
+      showMicStatus("Didn't catch that — tap mic and try again", '#F5C100');
+    } else if (e.error === 'network') {
+      showMicStatus('Network error — please type instead', '#D72B2B');
+    } else {
+      showMicStatus('Mic issue — please type your message', '#888');
+    }
+  };
+}
+
+function startListening() {
+  if (!recognition) setupSpeechRecognition();
+  if (!recognition) return;
+  navigator.permissions && navigator.permissions.query({ name: 'microphone' })
+    .then(result => {
+      if (result.state === 'denied') {
+        showMicStatus('Mic blocked in settings — please type', '#D72B2B');
+        addMessage("Looks like mic access is blocked on your device. No problem at all — just type your message and I'll help you out!", 'angie');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      isListening = true;
+      updateMicBtn();
+      showMicStatus('Listening... speak now 🎤', '#4ade80');
+      try { recognition.start(); } catch(e) { isListening = false; updateMicBtn(); }
+    })
+    .catch(() => {
+      window.speechSynthesis.cancel();
+      isListening = true;
+      updateMicBtn();
+      showMicStatus('Listening... speak now 🎤', '#4ade80');
+      try { recognition.start(); } catch(e) { isListening = false; updateMicBtn(); }
+    });
+}
+
+function stopListening() {
+  if (recognition) try { recognition.stop(); } catch(e) {}
+  isListening = false;
+  updateMicBtn();
+}
+
+function toggleMic() {
+  if (isListening) stopListening();
+  else startListening();
+}
+
+function updateMicBtn() {
+  const btn = document.getElementById('angie-mic');
+  if (!btn) return;
+  if (isListening) {
+    btn.style.background = '#D72B2B';
+    btn.innerHTML = '🔴';
+    btn.title = 'Listening... tap to stop';
+  } else {
+    btn.style.background = '#222';
+    btn.innerHTML = '🎤';
+    btn.title = 'Tap to speak';
+  }
+}
+
+function openAngie() {
+  document.getElementById('angie-minimized').style.display = 'none';
+  document.getElementById('angie-widget').classList.add('open');
+}
+
+function minimizeAngie() {
+  document.getElementById('angie-widget').classList.remove('open');
+  setTimeout(() => {
+    document.getElementById('angie-minimized').style.display = 'flex';
+  }, 400);
+}
+
+function addMessage(text, sender) {
+  const msgs = document.getElementById('angie-messages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + sender;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  if (sender === 'angie') speak(text);
+}
+
+function showTyping() {
+  const msgs = document.getElementById('angie-messages');
+  const div = document.createElement('div');
+  div.className = 'msg angie';
+  div.id = 'typing-indicator';
+  div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function hideTyping() {
+  const el = document.getElementById('typing-indicator');
+  if (el) el.remove();
+}
+
+async function sendToAngie(userText) {
+  if (isTyping) return;
+  isTyping = true;
+
+  if (userText) {
+    messages.push({ role: 'user', content: userText });
+    addMessage(userText, 'user');
+  }
+
+  showTyping();
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: messages
+      })
+    });
+    const data = await res.json();
+    const reply = data.content.map(b => b.text || '').join('');
+    hideTyping();
+    messages.push({ role: 'assistant', content: reply });
+    addMessage(reply, 'angie');
+  } catch(e) {
+    hideTyping();
+    addMessage("Sorry, I'm having a little trouble connecting. Please call us directly at (561) 255-8506!", 'angie');
+  }
+
+  isTyping = false;
+}
+
+document.getElementById('angie-send').addEventListener('click', () => {
+  const input = document.getElementById('angie-input');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  sendToAngie(text);
+});
+
+document.getElementById('angie-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    const input = e.target;
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    sendToAngie(text);
+  }
+});
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('angie-widget').classList.add('open');
+    setTimeout(() => sendToAngie(null), 600);
+  }, 1200);
+});
+</script>
+
 </body>
 </html>
