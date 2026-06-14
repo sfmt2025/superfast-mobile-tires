@@ -1,175 +1,565 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Fast Mobile Tires LLC</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Fast Mobile Tires | 24/7 Mobile Tire Service in West Palm Beach & Palm Beach County</title>
+  <meta name="description" content="Super Fast Mobile Tires provides 24/7 mobile tire service in West Palm Beach, Boynton Beach, Boca Raton, Delray Beach, Lake Worth & all of Palm Beach County. Flat tire repair, used tire installation, roadside assistance. Call (561) 255-8506." />
+  <meta name="keywords" content="mobile tire service West Palm Beach, flat tire repair Palm Beach County, mobile tire installation Boynton Beach, used tires Boca Raton, roadside assistance Delray Beach, 24 hour tire service Lake Worth, mobile tire change Greenacres, emergency tire service Palm Beach" />
+  <meta property="og:title" content="Super Fast Mobile Tires | 24/7 Mobile Tire Service Palm Beach County" />
+  <meta property="og:description" content="We come to you — home, work, or roadside. Flat tire repair, used tire installation, jump starts & more. Serving all of Palm Beach County 24/7." />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://sfmt2025.github.io/superfast-mobile-tires/" />
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #222;
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Barlow:wght@400;500;600&display=swap');
 
-        header {
-            background: black;
-            padding: 20px;
-            text-align: center;
-        }
+    :root {
+      --black: #0a0a0a;
+      --red: #D72B2B;
+      --red-dark: #a81f1f;
+      --yellow: #F5C100;
+      --white: #ffffff;
+      --gray: #f4f4f4;
+      --gray-mid: #888;
+      --text: #1a1a1a;
+    }
 
-        header img {
-            max-width: 280px;
-        }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        header h1 {
-            color: white;
-            margin: 10px 0 0 0;
-            font-size: 28px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .section {
-            padding: 25px;
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            margin-top: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        }
+    body {
+      font-family: 'Barlow', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
 
-        h2 {
-            color: #cc0000;
-        }
+    /* NAV */
+    nav {
+      background: var(--black);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
 
-        .services ul {
-            list-style: none;
-            padding: 0;
-        }
+    /* HERO */
+    .hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 60px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 120%, rgba(215,43,43,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.6rem, 8vw, 4.4rem);
+      line-height: 1.0;
+      letter-spacing: 0.01em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .hero h1 span { color: var(--red); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      padding: 16px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      border: 2px solid #444;
+      color: #ccc;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      padding: 13px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+    .hero-stars {
+      margin-top: 28px;
+      color: var(--yellow);
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+    .hero-stars span {
+      color: #aaa;
+      font-size: 0.85rem;
+      font-family: 'Barlow', sans-serif;
+      letter-spacing: 0;
+      margin-left: 8px;
+    }
 
-        .services li {
-            background: #eee;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
+    /* TRUST BAR */
+    .trust-bar {
+      background: var(--red);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .trust-item::before {
+      content: '✓';
+      color: var(--yellow);
+      font-size: 1.1rem;
+    }
 
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
+    /* SECTIONS */
+    section { padding: 56px 24px; }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.9rem, 6vw, 2.8rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      margin-bottom: 16px;
+    }
+    .section-intro {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 36px;
+    }
 
-        .pricing-table th, .pricing-table td {
-            border: 1px solid #ccc;
-            padding: 12px;
-            text-align: left;
-        }
+    /* SERVICES */
+    .services-bg { background: var(--gray); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      max-width: 600px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 20px 18px;
+      border-left: 4px solid var(--red);
+    }
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: #555;
+      line-height: 1.4;
+    }
+    .service-card .price {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--red);
+      margin-top: 8px;
+    }
 
-        .pricing-table th {
-            background: #ff3b3b;
-            color: white;
-        }
+    /* PRICING TABLE */
+    .pricing-table {
+      width: 100%;
+      max-width: 560px;
+      border-collapse: collapse;
+      margin-top: 8px;
+    }
+    .pricing-table tr {
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .pricing-table tr:last-child { border-bottom: none; }
+    .pricing-table td {
+      padding: 13px 4px;
+      font-size: 0.98rem;
+    }
+    .pricing-table td:last-child {
+      text-align: right;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--red);
+    }
 
-        .call-button {
-            display: block;
-            background: #ff0000;
-            color: white;
-            text-align: center;
-            padding: 18px;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 30px;
-            border-radius: 10px;
-            text-decoration: none;
-        }
+    /* AREAS */
+    .areas-bg { background: var(--black); color: var(--white); }
+    .areas-bg h2 { color: var(--white); }
+    .areas-bg .section-intro { color: #aaa; }
+    .cities-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 500px;
+    }
+    .city-pill {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 11px 16px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      color: #ddd;
+      text-transform: uppercase;
+    }
+    .city-pill.highlight {
+      border-color: var(--red);
+      color: var(--white);
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-        }
-    </style>
+    /* HOW IT WORKS */
+    .steps { display: flex; flex-direction: column; gap: 24px; max-width: 520px; }
+    .step { display: flex; gap: 18px; align-items: flex-start; }
+    .step-num {
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step-text h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+    .step-text p { font-size: 0.95rem; color: #555; line-height: 1.4; }
 
+    /* CTA BOTTOM */
+    .cta-bottom {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 56px 24px;
+    }
+    .cta-bottom h2 { color: var(--white); font-size: clamp(2rem, 7vw, 3rem); margin-bottom: 12px; }
+    .cta-bottom p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 28px; }
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--red);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      padding: 18px 44px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.15s;
+    }
+    .btn-white:hover { transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      color: #666;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+    footer a { color: #888; text-decoration: none; }
+
+    /* FLOATING CALL BTN */
+    .float-call {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      padding: 14px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(215,43,43,0.5);
+      z-index: 999;
+      text-transform: uppercase;
+      animation: pulse 2.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(215,43,43,0.5); }
+      50% { box-shadow: 0 4px 32px rgba(215,43,43,0.85); }
+    }
+
+    @media (max-width: 400px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .cities-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-    <img src="logo.png" alt="Super Fast Mobile Tires Logo">
-    <h1>SUPER FAST MOBILE TIRES LLC</h1>
-</header>
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:5612558506" class="float-call">📞 Call Now</a>
 
-<div class="section">
-    <h2>About Us</h2>
-    <p>Super Fast Mobile Tires is South Florida’s fastest mobile tire and roadside assistance service. 
-       Serving Palm Beach County and a 100-mile radius. We come to you — home, work, roadside, anywhere.</p>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SUPER FAST<br><span>MOBILE TIRES</span></div>
+  <a href="tel:5612558506" class="nav-cta">Call (561) 255-8506</a>
+</nav>
 
-    <a href="tel:5612558506" class="call-button">📞 CALL NOW — 561-255-8506</a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">⚡ Open 24 Hours — 7 Days a Week</div>
+  <h1>Flat Tire?<br>We Come <span>To You.</span></h1>
+  <p class="hero-sub">Mobile tire service across West Palm Beach and all of Palm Beach County. Home, work, or roadside — we're there fast.</p>
+  <div class="hero-buttons">
+    <a href="tel:5612558506" class="btn-primary">📞 Call (561) 255-8506</a>
+    <a href="#services" class="btn-secondary">See Our Services</a>
+  </div>
+  <div class="hero-stars">
+    ★★★★★ <span>5.0 Stars on Google</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">Open 24/7</div>
+  <div class="trust-item">We Come to You</div>
+  <div class="trust-item">Used & New Tires</div>
+  <div class="trust-item">Same-Day Service</div>
 </div>
 
-<div class="section services">
-    <h2>Services Offered</h2>
-    <ul>
-        <li>✔️ Mobile Tire Change</li>
-        <li>✔️ Flat Tire Repair</li>
-        <li>✔️ Jump Start Service</li>
-        <li>✔️ Vehicle Lockout Service</li>
-        <li>✔️ Emergency Gas Delivery</li>
-    </ul>
-</div>
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="section-label">What We Do</div>
+  <h2>Mobile Tire Services</h2>
+  <p class="section-intro">We bring the tire shop directly to your location anywhere in Palm Beach County. No tow truck needed. No waiting at a shop. We handle it on the spot.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>Flat Tire Repair</h3>
+      <p>Stuck with a flat? We patch, plug, or replace on the spot.</p>
+      <div class="price">From $60</div>
+    </div>
+    <div class="service-card">
+      <h3>Used Tire Install</h3>
+      <p>Quality used tires mounted and installed at your location.</p>
+      <div class="price">From $60/tire</div>
+    </div>
+    <div class="service-card">
+      <h3>New Tire Install</h3>
+      <p>New tires sourced and installed wherever you are.</p>
+      <div class="price">Call for quote</div>
+    </div>
+    <div class="service-card">
+      <h3>Tire Change</h3>
+      <p>Swap to your spare or a replacement tire fast.</p>
+      <div class="price">From $60</div>
+    </div>
+    <div class="service-card">
+      <h3>Jump Start</h3>
+      <p>Dead battery? We get you started and back on the road.</p>
+      <div class="price">$50</div>
+    </div>
+    <div class="service-card">
+      <h3>Lockout Service</h3>
+      <p>Locked your keys inside? We'll get you back in fast.</p>
+      <div class="price">$70</div>
+    </div>
+    <div class="service-card">
+      <h3>Gas Delivery</h3>
+      <p>Ran out of gas? We bring fuel right to your location.</p>
+      <div class="price">$50 + gas</div>
+    </div>
+    <div class="service-card">
+      <h3>Roadside Assist</h3>
+      <p>Stranded anywhere in Palm Beach County — we respond fast.</p>
+      <div class="price">Call us</div>
+    </div>
+  </div>
+</section>
 
-<div class="section">
-    <h2>Pricing</h2>
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-label">Transparent Pricing</div>
+  <h2>No Hidden Fees</h2>
+  <p class="section-intro">We tell you the price upfront before we come. No surprises when the job is done.</p>
+  <table class="pricing-table">
+    <tr><td>Service Call Fee</td><td>$40</td></tr>
+    <tr><td>Flat Tire Repair / Tire Change</td><td>$60</td></tr>
+    <tr><td>Used Tire (per tire)</td><td>From $60</td></tr>
+    <tr><td>Tire Disposal (per tire)</td><td>$10</td></tr>
+    <tr><td>Jump Start</td><td>$50</td></tr>
+    <tr><td>Lockout Service</td><td>$70</td></tr>
+    <tr><td>Gas Delivery (plus cost of gas)</td><td>$50</td></tr>
+    <tr><td>Mileage (one-way)</td><td>$2.50/mile</td></tr>
+  </table>
+</section>
 
-    <table class="pricing-table">
-        <tr>
-            <th>Service</th>
-            <th>Price</th>
-        </tr>
+<!-- HOW IT WORKS -->
+<section class="services-bg" id="how">
+  <div class="section-label">Simple Process</div>
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <h3>Call or Text Us</h3>
+        <p>Tell us where you are and what you need. We'll give you a price on the spot — no surprises.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <h3>We Come to You</h3>
+        <p>Stay where you are. We head to your location in West Palm Beach or anywhere in Palm Beach County — home, work, or roadside.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <h3>Back on the Road</h3>
+        <p>We handle the job fast and professionally. Most tire services are done in under an hour.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <tr>
-            <td>Service Call Fee</td>
-            <td>$40</td>
-        </tr>
+<!-- SERVICE AREAS -->
+<section class="areas-bg" id="areas">
+  <div class="section-label">Where We Serve</div>
+  <h2>All of Palm Beach County</h2>
+  <p class="section-intro">We provide 24/7 mobile tire service throughout Palm Beach County, Florida. If you're in any of these cities — we come to you.</p>
+  <div class="cities-grid">
+    <div class="city-pill highlight">West Palm Beach</div>
+    <div class="city-pill highlight">Boynton Beach</div>
+    <div class="city-pill highlight">Boca Raton</div>
+    <div class="city-pill highlight">Delray Beach</div>
+    <div class="city-pill">Lake Worth</div>
+    <div class="city-pill">Greenacres</div>
+    <div class="city-pill">Wellington</div>
+    <div class="city-pill">Royal Palm Beach</div>
+    <div class="city-pill">Palm Beach Gardens</div>
+    <div class="city-pill">Jupiter</div>
+    <div class="city-pill">Riviera Beach</div>
+    <div class="city-pill">Belle Glade</div>
+  </div>
+</section>
 
-        <tr>
-            <td>Flat Tire Repair</td>
-            <td>$60</td>
-        </tr>
+<!-- BOTTOM CTA -->
+<section class="cta-bottom">
+  <h2>Stuck Right Now?</h2>
+  <p>We're open 24 hours, 7 days a week. Call us and we'll be on our way.</p>
+  <a href="tel:5612558506" class="btn-white">📞 (561) 255-8506</a>
+</section>
 
-        <tr>
-            <td>Jump Start</td>
-            <td>$50</td>
-        </tr>
-
-        <tr>
-            <td>Lockout Service</td>
-            <td>$70</td>
-        </tr>
-
-        <tr>
-            <td>Gas Delivery (plus cost of gas)</td>
-            <td>$50</td>
-        </tr>
-
-        <tr>
-            <td>Standard Mileage</td>
-            <td>$2.50 per mile (one-way)</td>
-        </tr>
-
-        <tr>
-            <td>Long Distance Mileage</td>
-            <td>$2.00 per mile (round-trip)</td>
-        </tr>
-    </table>
-
-    <a href="tel:5612558506" class="call-button">📞 CALL NOW — 561-255-8506</a>
-</div>
-
+<!-- FOOTER -->
 <footer>
-    © 2026 Super Fast Mobile Tires LLC — West Palm Beach, FL  
+  <p><strong style="color:#fff;">Super Fast Mobile Tires LLC</strong></p>
+  <p>West Palm Beach, FL · Serving all of Palm Beach County</p>
+  <p>📞 <a href="tel:5612558506">(561) 255-8506</a> · Open 24/7</p>
+  <p style="margin-top:12px;">Mobile tire service · Flat tire repair · Used tire installation · Roadside assistance<br>West Palm Beach · Boynton Beach · Boca Raton · Delray Beach · Lake Worth · Wellington · Jupiter</p>
+  <p style="margin-top:16px;">© 2026 Super Fast Mobile Tires LLC. All rights reserved.</p>
 </footer>
 
 </body>
