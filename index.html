@@ -813,8 +813,6 @@ let messages = [];
 let isTyping = false;
 let isListening = false;
 let recognition = null;
-const ANTHROPIC_API_KEY = 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;
-
 let selectedVoice = null;
 
 function loadVoice() {
@@ -986,13 +984,10 @@ async function sendToAngie(userText) {
   showTyping();
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('https://broad-bonus-2b72.jgwaup28.workers.dev/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
