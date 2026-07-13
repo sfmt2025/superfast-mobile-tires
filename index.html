@@ -26,14 +26,8 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Barlow', sans-serif;
-      color: var(--text);
-      background: var(--white);
-    }
+    body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--white); }
 
     /* NAV */
     nav {
@@ -151,6 +145,21 @@
       transition: border-color 0.2s, color 0.2s;
     }
     .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+    .btn-app {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      padding: 14px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn-app:hover { opacity: 0.9; transform: translateY(-1px); }
     .hero-stars {
       margin-top: 28px;
       color: var(--yellow);
@@ -185,11 +194,7 @@
       align-items: center;
       gap: 8px;
     }
-    .trust-item::before {
-      content: '✓';
-      color: var(--yellow);
-      font-size: 1.1rem;
-    }
+    .trust-item::before { content: '✓'; color: var(--yellow); font-size: 1.1rem; }
 
     /* SECTIONS */
     section { padding: 56px 24px; }
@@ -219,6 +224,147 @@
       margin-bottom: 36px;
     }
 
+    /* BOOK NOW SECTION */
+    .book-now {
+      background: var(--black);
+      padding: 64px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .book-now::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(215,43,43,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .book-now-inner {
+      max-width: 600px;
+      position: relative;
+      z-index: 1;
+    }
+    .book-now-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,193,0,0.12);
+      border: 1px solid rgba(245,193,0,0.35);
+      color: var(--yellow);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+    .book-now h2 {
+      color: var(--white);
+      font-size: clamp(2.2rem, 7vw, 3.4rem);
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .book-now h2 span { color: var(--red); }
+    .book-now-sub {
+      color: #999;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    .book-now-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+    .book-now-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .book-now-step-icon {
+      width: 40px;
+      height: 40px;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .book-now-step-text {
+      font-size: 0.95rem;
+      color: #ccc;
+      line-height: 1.4;
+    }
+    .book-now-step-text strong {
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .book-now-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .btn-book-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      letter-spacing: 0.06em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-book-main:hover { background: var(--red-dark); transform: translateY(-1px); }
+    .book-now-or {
+      color: #444;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .book-now-pricing-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid #1e1e1e;
+    }
+    .price-pill {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 8px 14px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #aaa;
+      letter-spacing: 0.04em;
+    }
+    .price-pill span { color: var(--yellow); margin-left: 6px; }
+
+
     /* SERVICES */
     .services-bg { background: var(--gray); }
     .services-grid {
@@ -241,11 +387,7 @@
       text-transform: uppercase;
       margin-bottom: 5px;
     }
-    .service-card p {
-      font-size: 0.88rem;
-      color: #555;
-      line-height: 1.4;
-    }
+    .service-card p { font-size: 0.88rem; color: #555; line-height: 1.4; }
     .service-card .price {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 700;
@@ -255,20 +397,10 @@
     }
 
     /* PRICING TABLE */
-    .pricing-table {
-      width: 100%;
-      max-width: 560px;
-      border-collapse: collapse;
-      margin-top: 8px;
-    }
-    .pricing-table tr {
-      border-bottom: 1px solid #e5e5e5;
-    }
+    .pricing-table { width: 100%; max-width: 560px; border-collapse: collapse; margin-top: 8px; }
+    .pricing-table tr { border-bottom: 1px solid #e5e5e5; }
     .pricing-table tr:last-child { border-bottom: none; }
-    .pricing-table td {
-      padding: 13px 4px;
-      font-size: 0.98rem;
-    }
+    .pricing-table td { padding: 13px 4px; font-size: 0.98rem; }
     .pricing-table td:last-child {
       text-align: right;
       font-family: 'Barlow Condensed', sans-serif;
@@ -281,12 +413,7 @@
     .areas-bg { background: var(--black); color: var(--white); }
     .areas-bg h2 { color: var(--white); }
     .areas-bg .section-intro { color: #aaa; }
-    .cities-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      max-width: 500px;
-    }
+    .cities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 500px; }
     .city-pill {
       background: #1a1a1a;
       border: 1px solid #333;
@@ -299,10 +426,7 @@
       color: #ddd;
       text-transform: uppercase;
     }
-    .city-pill.highlight {
-      border-color: var(--red);
-      color: var(--white);
-    }
+    .city-pill.highlight { border-color: var(--red); color: var(--white); }
 
     /* HOW IT WORKS */
     .steps { display: flex; flex-direction: column; gap: 24px; max-width: 520px; }
@@ -332,12 +456,7 @@
     .step-text p { font-size: 0.95rem; color: #555; line-height: 1.4; }
 
     /* CTA BOTTOM */
-    .cta-bottom {
-      background: var(--red);
-      color: var(--white);
-      text-align: center;
-      padding: 56px 24px;
-    }
+    .cta-bottom { background: var(--red); color: var(--white); text-align: center; padding: 56px 24px; }
     .cta-bottom h2 { color: var(--white); font-size: clamp(2rem, 7vw, 3rem); margin-bottom: 12px; }
     .cta-bottom p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 28px; }
     .btn-white {
@@ -353,8 +472,26 @@
       text-decoration: none;
       text-transform: uppercase;
       transition: transform 0.15s;
+      margin: 6px;
     }
     .btn-white:hover { transform: translateY(-2px); }
+    .btn-white-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      letter-spacing: 0.06em;
+      padding: 16px 36px;
+      border-radius: 4px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: border-color 0.2s, transform 0.15s;
+      margin: 6px;
+    }
+    .btn-white-outline:hover { border-color: #fff; transform: translateY(-2px); }
 
     /* FOOTER */
     footer {
@@ -408,7 +545,10 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">SUPER FAST<br><span>MOBILE TIRES</span></div>
-  <a href="tel:5612558506" class="nav-cta">Call (561) 255-8506</a>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="https://superfast-tires.web.app" class="nav-cta" style="background:var(--yellow);color:var(--black);">⚡ Book Now</a>
+    <a href="tel:5612558506" class="nav-cta">📞 (561) 255-8506</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -418,6 +558,7 @@
   <p class="hero-sub">Mobile tire service across West Palm Beach and all of Palm Beach County. Home, work, or roadside — we're there fast.</p>
   <div class="hero-buttons">
     <a href="tel:5612558506" class="btn-primary">📞 Call (561) 255-8506</a>
+    <a href="https://superfast-tires.web.app" class="btn-app">⚡ Book Online — Pay in App</a>
     <a href="#services" class="btn-secondary">See Our Services</a>
   </div>
   <div class="hero-stars">
@@ -431,6 +572,53 @@
   <div class="trust-item">We Come to You</div>
   <div class="trust-item">Used & New Tires</div>
   <div class="trust-item">Same-Day Service</div>
+</div>
+
+<!-- BOOK NOW SECTION -->
+<div class="book-now" id="book">
+  <div class="book-now-inner">
+    <div class="book-now-eyebrow">⚡ New — Skip the Wait</div>
+    <h2>Book Now.<br><span>Pay in the App.</span><br>We Dispatch Fast.</h2>
+    <p class="book-now-sub">No phone tag. No hold music. Select your service, drop your location, pay securely — and we send a tech to you immediately.</p>
+
+    <div class="book-now-steps">
+      <div class="book-now-step">
+        <div class="book-now-step-icon">📍</div>
+        <div class="book-now-step-text">
+          <strong>Drop Your Location</strong>
+          Tap to use GPS or type your address — home, work, or roadside
+        </div>
+      </div>
+      <div class="book-now-step">
+        <div class="book-now-step-icon">🛞</div>
+        <div class="book-now-step-text">
+          <strong>Pick Your Service</strong>
+          Tire change, jump start, fuel delivery, lockout — select and pay upfront
+        </div>
+      </div>
+      <div class="book-now-step">
+        <div class="book-now-step-icon">🛻</div>
+        <div class="book-now-step-text">
+          <strong>Tech Dispatched Immediately</strong>
+          Average arrival 25–40 minutes anywhere in South Florida
+        </div>
+      </div>
+    </div>
+
+    <div class="book-now-btns">
+      <a href="https://superfast-tires.web.app" class="btn-book-main">⚡ Book Now — Open App</a>
+      <span class="book-now-or">— or —</span>
+      <a href="tel:5612558506" class="btn-secondary" style="font-size:1rem;">📞 Call (561) 255-8506</a>
+    </div>
+
+    <div class="book-now-pricing-note">
+      <div class="price-pill">Tire Change <span>$200</span></div>
+      <div class="price-pill">With Spare <span>$120</span></div>
+      <div class="price-pill">Jump Start <span>$80</span></div>
+      <div class="price-pill">Fuel Delivery <span>$80</span></div>
+      <div class="price-pill">Lockout <span>$125</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- SERVICES -->
@@ -462,17 +650,17 @@
     <div class="service-card">
       <h3>Jump Start</h3>
       <p>Dead battery? We get you started and back on the road.</p>
-      <div class="price">$50</div>
+      <div class="price">$80</div>
     </div>
     <div class="service-card">
       <h3>Lockout Service</h3>
       <p>Locked your keys inside? We'll get you back in fast.</p>
-      <div class="price">$70</div>
+      <div class="price">$125</div>
     </div>
     <div class="service-card">
       <h3>Gas Delivery</h3>
       <p>Ran out of gas? We bring fuel right to your location.</p>
-      <div class="price">$50 + gas</div>
+      <div class="price">$80</div>
     </div>
     <div class="service-card">
       <h3>Roadside Assist</h3>
@@ -488,13 +676,14 @@
   <h2>No Hidden Fees</h2>
   <p class="section-intro">We tell you the price upfront before we come. No surprises when the job is done.</p>
   <table class="pricing-table">
-    <tr><td>Service Call Fee</td><td>$40</td></tr>
-    <tr><td>Flat Tire Repair / Tire Change</td><td>$60</td></tr>
+    <tr><td>Tire Change (we bring tire)</td><td>$200</td></tr>
+    <tr><td>Tire Change (you have spare)</td><td>$120</td></tr>
+    <tr><td>Flat Tire Repair</td><td>From $60</td></tr>
     <tr><td>Used Tire (per tire)</td><td>From $60</td></tr>
     <tr><td>Tire Disposal (per tire)</td><td>$10</td></tr>
-    <tr><td>Jump Start</td><td>$50</td></tr>
-    <tr><td>Lockout Service</td><td>$70</td></tr>
-    <tr><td>Gas Delivery (plus cost of gas)</td><td>$50</td></tr>
+    <tr><td>Jump Start</td><td>$80</td></tr>
+    <tr><td>Lockout Service</td><td>$125</td></tr>
+    <tr><td>Gas Delivery (plus cost of gas)</td><td>$80</td></tr>
     <tr><td>Mileage (one-way)</td><td>$2.50/mile</td></tr>
   </table>
 </section>
@@ -507,8 +696,8 @@
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-text">
-        <h3>Call or Text Us</h3>
-        <p>Tell us where you are and what you need. We'll give you a price on the spot — no surprises.</p>
+        <h3>Book Online or Call</h3>
+        <p>Use our app to book and pay instantly — or call us at (561) 255-8506. We'll give you a price on the spot, no surprises.</p>
       </div>
     </div>
     <div class="step">
@@ -552,8 +741,11 @@
 <!-- BOTTOM CTA -->
 <section class="cta-bottom">
   <h2>Stuck Right Now?</h2>
-  <p>We're open 24 hours, 7 days a week. Call us and we'll be on our way.</p>
-  <a href="tel:5612558506" class="btn-white">📞 (561) 255-8506</a>
+  <p>Book instantly in the app or call us — we're open 24 hours, 7 days a week.</p>
+  <div>
+    <a href="https://superfast-tires.web.app" class="btn-white">⚡ Book in App</a>
+    <a href="tel:5612558506" class="btn-white-outline">📞 (561) 255-8506</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -564,483 +756,6 @@
   <p style="margin-top:12px;">Mobile tire service · Flat tire repair · Used tire installation · Roadside assistance<br>West Palm Beach · Boynton Beach · Boca Raton · Delray Beach · Lake Worth · Wellington · Jupiter</p>
   <p style="margin-top:16px;">© 2026 Super Fast Mobile Tires LLC. All rights reserved.</p>
 </footer>
-
-<!-- ANGIE AI CHAT WIDGET -->
-<style>
-  #angie-widget {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 340px;
-    max-width: calc(100vw - 40px);
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transform: translateY(20px);
-    opacity: 0;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    font-family: 'Barlow', sans-serif;
-  }
-  #angie-widget.open {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  #angie-header {
-    background: #0a0a0a;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: space-between;
-  }
-  #angie-header-left { display: flex; align-items: center; gap: 10px; }
-  .angie-avatar {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #D72B2B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 900;
-    font-size: 1rem;
-    color: #fff;
-    flex-shrink: 0;
-  }
-  .angie-name {
-    color: #fff;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
-  }
-  .angie-status {
-    font-size: 0.75rem;
-    color: #4ade80;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
-  #angie-close {
-    background: none;
-    border: none;
-    color: #888;
-    font-size: 1.3rem;
-    cursor: pointer;
-    padding: 4px;
-    line-height: 1;
-    transition: color 0.2s;
-  }
-  #angie-close:hover { color: #fff; }
-  #angie-messages {
-    padding: 16px;
-    max-height: 280px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: #f9f9f9;
-  }
-  .msg {
-    max-width: 85%;
-    padding: 10px 14px;
-    border-radius: 14px;
-    font-size: 0.9rem;
-    line-height: 1.45;
-  }
-  .msg.angie {
-    background: #fff;
-    color: #1a1a1a;
-    border: 1px solid #e5e5e5;
-    align-self: flex-start;
-    border-bottom-left-radius: 4px;
-  }
-  .msg.user {
-    background: #D72B2B;
-    color: #fff;
-    align-self: flex-end;
-    border-bottom-right-radius: 4px;
-  }
-  .typing-dots {
-    display: flex;
-    gap: 4px;
-    align-items: center;
-    padding: 6px 0;
-  }
-  .typing-dots span {
-    width: 7px;
-    height: 7px;
-    background: #bbb;
-    border-radius: 50%;
-    animation: bounce 1.2s infinite;
-  }
-  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes bounce {
-    0%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-6px); }
-  }
-  #angie-input-row {
-    display: flex;
-    gap: 8px;
-    padding: 12px 14px;
-    border-top: 1px solid #eee;
-    background: #fff;
-  }
-  #angie-input {
-    flex: 1;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    padding: 9px 14px;
-    font-size: 0.88rem;
-    font-family: 'Barlow', sans-serif;
-    outline: none;
-    color: #1a1a1a;
-    transition: border-color 0.2s;
-  }
-  #angie-input:focus { border-color: #D72B2B; }
-  #angie-send {
-    background: #D72B2B;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  #angie-send:hover { background: #a81f1f; }
-  #angie-minimized {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: #0a0a0a;
-    color: #fff;
-    border-radius: 50px;
-    padding: 12px 20px;
-    display: none;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    z-index: 9999;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-    transition: transform 0.2s;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.04em;
-  }
-  #angie-minimized:hover { transform: translateY(-2px); }
-  .angie-dot {
-    width: 9px;
-    height: 9px;
-    background: #4ade80;
-    border-radius: 50%;
-    animation: pulse-dot 2s infinite;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
-</style>
-
-<!-- Minimized state -->
-<div id="angie-minimized" onclick="openAngie()">
-  <div class="angie-dot"></div>
-  Angie — Ask Me Anything
-</div>
-
-<!-- Full chat widget -->
-<div id="angie-widget">
-  <div id="angie-header">
-    <div id="angie-header-left">
-      <div class="angie-avatar">A</div>
-      <div>
-        <div class="angie-name">Angie</div>
-        <div class="angie-status">● Online now</div>
-      </div>
-    </div>
-    <button id="angie-close" onclick="minimizeAngie()" aria-label="Minimize chat">✕</button>
-  </div>
-  <div id="angie-messages"></div>
-  <div id="angie-input-row">
-    <button id="angie-mic" onclick="toggleMic()" title="Tap to speak" aria-label="Voice input" style="background:#222;color:#fff;border:none;border-radius:50%;width:38px;height:38px;font-size:1rem;cursor:pointer;flex-shrink:0;transition:background 0.2s;">🎤</button>
-    <input id="angie-input" type="text" placeholder="Type or tap mic to speak..." autocomplete="off" />
-    <button id="angie-send" aria-label="Send message">➤</button>
-  </div>
-</div>
-
-<script>
-const SYSTEM_PROMPT = `You are Angie, an energetic, professional AI assistant for Super Fast Mobile Tires LLC. You help website visitors get fast mobile tire service in West Palm Beach and all of Palm Beach County, FL.
-
-Your personality: Warm, fast, confident, reassuring. Short clear sentences. Natural and human.
-
-Your job: Help visitors understand services, answer questions, and collect dispatch info if they need service NOW.
-
-If they need service, collect in this order (one question at a time):
-1. Individual or business?
-2. Full name / company name
-3. Best callback phone number
-4. Vehicle year, make, model
-5. Tire size (look up OEM size from vehicle info, confirm with them)
-6. How many tires
-7. Exact location (address or intersection, and environment - roadside, parking lot, home, etc.)
-8. Now or schedule later?
-
-Rules:
-- NEVER quote prices - say "The technician will give you an exact quote on arrival"
-- ETA is always 25-30 minutes
-- Ask only ONE question at a time
-- If they ask about services: Mobile tire change, flat repair, used tire install, new tire install, jump start ($50), lockout ($70), gas delivery ($50 + gas), roadside assistance
-- Always be warm and reassuring
-- Keep responses SHORT - 1-3 sentences max
-- If they seem stressed or stranded, acknowledge that first before asking questions
-- End dispatch with a natural recap of all details collected
-
-Start by greeting them warmly and asking what you can help with today.`;
-
-let messages = [];
-let isTyping = false;
-let isListening = false;
-let recognition = null;
-let selectedVoice = null;
-
-function loadVoice() {
-  const voices = window.speechSynthesis.getVoices();
-  selectedVoice =
-    voices.find(v => v.name.includes('Samantha')) ||
-    voices.find(v => v.name.includes('Google US English Female')) ||
-    voices.find(v => v.name.includes('Zira')) ||
-    voices.find(v => v.lang === 'en-US') ||
-    voices[0];
-}
-window.speechSynthesis.onvoiceschanged = loadVoice;
-loadVoice();
-
-function speak(text) {
-  window.speechSynthesis.cancel();
-  const clean = text.replace(/[*_~`#]/g, '').trim();
-  if (!clean) return;
-  const utter = new SpeechSynthesisUtterance(clean);
-  utter.voice = selectedVoice;
-  utter.rate = 1.05;
-  utter.pitch = 1.1;
-  utter.volume = 1;
-  window.speechSynthesis.speak(utter);
-}
-
-function showMicStatus(msg, color) {
-  const input = document.getElementById('angie-input');
-  if (input) {
-    input.placeholder = msg;
-    input.style.borderColor = color || '#ddd';
-    setTimeout(() => {
-      input.placeholder = 'Type or tap mic to speak...';
-      input.style.borderColor = '#ddd';
-    }, 3500);
-  }
-}
-
-function setupSpeechRecognition() {
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) {
-    showMicStatus('Voice not supported — please type', '#D72B2B');
-    return;
-  }
-  recognition = new SR();
-  recognition.continuous = false;
-  recognition.interimResults = false;
-  recognition.lang = 'en-US';
-  recognition.onresult = (e) => {
-    const transcript = e.results[0][0].transcript.trim();
-    if (transcript) {
-      stopListening();
-      sendToAngie(transcript);
-    }
-  };
-  recognition.onend = () => { isListening = false; updateMicBtn(); };
-  recognition.onerror = (e) => {
-    isListening = false;
-    updateMicBtn();
-    if (e.error === 'not-allowed' || e.error === 'permission-denied') {
-      showMicStatus('Mic blocked — please type your message', '#D72B2B');
-      addMessage("No worries — I can't access your mic right now. Just type your message below and I'll take care of you!", 'angie');
-    } else if (e.error === 'no-speech') {
-      showMicStatus("Didn't catch that — tap mic and try again", '#F5C100');
-    } else if (e.error === 'network') {
-      showMicStatus('Network error — please type instead', '#D72B2B');
-    } else {
-      showMicStatus('Mic issue — please type your message', '#888');
-    }
-  };
-}
-
-function startListening() {
-  if (!recognition) setupSpeechRecognition();
-  if (!recognition) return;
-  navigator.permissions && navigator.permissions.query({ name: 'microphone' })
-    .then(result => {
-      if (result.state === 'denied') {
-        showMicStatus('Mic blocked in settings — please type', '#D72B2B');
-        addMessage("Looks like mic access is blocked on your device. No problem at all — just type your message and I'll help you out!", 'angie');
-        return;
-      }
-      window.speechSynthesis.cancel();
-      isListening = true;
-      updateMicBtn();
-      showMicStatus('Listening... speak now 🎤', '#4ade80');
-      try { recognition.start(); } catch(e) { isListening = false; updateMicBtn(); }
-    })
-    .catch(() => {
-      window.speechSynthesis.cancel();
-      isListening = true;
-      updateMicBtn();
-      showMicStatus('Listening... speak now 🎤', '#4ade80');
-      try { recognition.start(); } catch(e) { isListening = false; updateMicBtn(); }
-    });
-}
-
-function stopListening() {
-  if (recognition) try { recognition.stop(); } catch(e) {}
-  isListening = false;
-  updateMicBtn();
-}
-
-function toggleMic() {
-  if (isListening) stopListening();
-  else startListening();
-}
-
-function updateMicBtn() {
-  const btn = document.getElementById('angie-mic');
-  if (!btn) return;
-  if (isListening) {
-    btn.style.background = '#D72B2B';
-    btn.innerHTML = '🔴';
-    btn.title = 'Listening... tap to stop';
-  } else {
-    btn.style.background = '#222';
-    btn.innerHTML = '🎤';
-    btn.title = 'Tap to speak';
-  }
-}
-
-function openAngie() {
-  document.getElementById('angie-minimized').style.display = 'none';
-  document.getElementById('angie-widget').classList.add('open');
-}
-
-function minimizeAngie() {
-  document.getElementById('angie-widget').classList.remove('open');
-  setTimeout(() => {
-    document.getElementById('angie-minimized').style.display = 'flex';
-  }, 400);
-}
-
-function addMessage(text, sender) {
-  const msgs = document.getElementById('angie-messages');
-  const div = document.createElement('div');
-  div.className = 'msg ' + sender;
-  div.textContent = text;
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-  if (sender === 'angie') speak(text);
-}
-
-function showTyping() {
-  const msgs = document.getElementById('angie-messages');
-  const div = document.createElement('div');
-  div.className = 'msg angie';
-  div.id = 'typing-indicator';
-  div.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
-  msgs.appendChild(div);
-  msgs.scrollTop = msgs.scrollHeight;
-}
-
-function hideTyping() {
-  const el = document.getElementById('typing-indicator');
-  if (el) el.remove();
-}
-
-async function sendToAngie(userText) {
-  if (isTyping) return;
-  isTyping = true;
-
-  if (userText) {
-    messages.push({ role: 'user', content: userText });
-    addMessage(userText, 'user');
-  }
-
-  showTyping();
-
-  try {
-    const res = await fetch('https://broad-bonus-2b72.jgwaup28.workers.dev/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1000,
-        system: SYSTEM_PROMPT,
-        messages: messages
-      })
-    });
-    const data = await res.json();
-    let reply = '';
-    if (data.content && Array.isArray(data.content)) {
-      reply = data.content.map(b => b.text || '').join('');
-    } else if (data.error) {
-      reply = 'Debug: ' + data.error.message;
-    } else {
-      reply = 'Debug raw: ' + JSON.stringify(data);
-    }
-    hideTyping();
-    messages.push({ role: 'assistant', content: reply });
-    addMessage(reply, 'angie');
-  } catch(e) {
-    hideTyping();
-    addMessage("Debug error: " + e.message, 'angie');
-  }
-
-  isTyping = false;
-}
-
-document.getElementById('angie-send').addEventListener('click', () => {
-  const input = document.getElementById('angie-input');
-  const text = input.value.trim();
-  if (!text) return;
-  input.value = '';
-  sendToAngie(text);
-});
-
-document.getElementById('angie-input').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const input = e.target;
-    const text = input.value.trim();
-    if (!text) return;
-    input.value = '';
-    sendToAngie(text);
-  }
-});
-
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('angie-widget').classList.add('open');
-    setTimeout(() => sendToAngie(null), 600);
-  }, 1200);
-});
-</script>
 
 </body>
 </html>
