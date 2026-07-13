@@ -493,6 +493,27 @@
     }
     .btn-white-outline:hover { border-color: #fff; transform: translateY(-2px); }
 
+    /* PROVIDER SECTION */
+    .provider-section { background: var(--gray); padding: 56px 24px; }
+    .provider-perks { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; max-width: 560px; }
+    .provider-perk { display: flex; align-items: flex-start; gap: 14px; background: var(--white); border-radius: 8px; padding: 16px; border-left: 4px solid var(--red); }
+    .perk-icon { font-size: 24px; flex-shrink: 0; }
+    .perk-text { font-size: 0.92rem; color: #444; line-height: 1.5; }
+    .perk-text strong { display: block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+    .provider-form-wrap { background: var(--white); border-radius: 10px; padding: 28px 24px; max-width: 560px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .provider-form-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 20px; color: var(--text); }
+    .provider-form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #666; }
+    .form-group input, .form-group textarea, .form-group select { border: 1px solid #ddd; border-radius: 6px; padding: 11px 14px; font-size: 0.95rem; font-family: 'Barlow', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; width: 100%; box-sizing: border-box; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--red); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .checkbox-label { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; color: var(--text); cursor: pointer; font-family: 'Barlow', sans-serif; }
+    .checkbox-label input { width: auto; }
+    @media (max-width: 400px) { .form-row { grid-template-columns: 1fr; } }
+
     /* FOOTER */
     footer {
       background: var(--black);
@@ -545,7 +566,8 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">SUPER FAST<br><span>MOBILE TIRES</span></div>
-  <div style="display:flex;gap:10px;align-items:center;">
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+    <a href="#providers" class="nav-cta" style="background:transparent;border:1px solid #666;color:#ffffff;font-size:0.85rem;padding:8px 14px;font-weight:900;">JOIN AS PROVIDER</a>
     <a href="https://superfast-tires.web.app" class="nav-cta" style="background:var(--yellow);color:var(--black);">⚡ Book Now</a>
     <a href="tel:5612558506" class="nav-cta">📞 (561) 255-8506</a>
   </div>
@@ -745,6 +767,88 @@
   <div>
     <a href="https://superfast-tires.web.app" class="btn-white">⚡ Book in App</a>
     <a href="tel:5612558506" class="btn-white-outline">📞 (561) 255-8506</a>
+  </div>
+</section>
+
+<!-- BECOME A PROVIDER -->
+<section class="provider-section" id="providers">
+  <div class="section-label">Join Our Team</div>
+  <h2>Become a Provider</h2>
+  <p class="section-intro">Are you a mobile tire tech or roadside service professional in South Florida? Partner with Super Fast Roadside and get jobs dispatched directly to you.</p>
+
+  <div class="provider-perks">
+    <div class="provider-perk">
+      <div class="perk-icon">💰</div>
+      <div class="perk-text">
+        <strong>Earn Per Job</strong>
+        Get paid for every job you complete — no slow seasons.
+      </div>
+    </div>
+    <div class="provider-perk">
+      <div class="perk-icon">📍</div>
+      <div class="perk-text">
+        <strong>Work Your Area</strong>
+        Jobs dispatched in your service zone across South Florida.
+      </div>
+    </div>
+    <div class="provider-perk">
+      <div class="perk-icon">📱</div>
+      <div class="perk-text">
+        <strong>App-Based Dispatch</strong>
+        Accept jobs, navigate to customers, and update status all in the app.
+      </div>
+    </div>
+    <div class="provider-perk">
+      <div class="perk-icon">⚡</div>
+      <div class="perk-text">
+        <strong>Flexible Schedule</strong>
+        Work when you want. You control your availability.
+      </div>
+    </div>
+  </div>
+
+  <div class="provider-form-wrap">
+    <div class="provider-form-title">Apply to Be a Provider</div>
+    <!-- REPLACE action URL below with your Formspree or Freeform URL -->
+    <form class="provider-form" action="https://formspree.io/f/xrengqnn" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="firstName" placeholder="John" required />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" name="lastName" placeholder="Smith" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="john@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="(561) 000-0000" required />
+      </div>
+      <div class="form-group">
+        <label>City You Work In</label>
+        <input type="text" name="city" placeholder="West Palm Beach, FL" required />
+      </div>
+      <div class="form-group">
+        <label>Services You Offer</label>
+        <div class="checkbox-group">
+          <label class="checkbox-label"><input type="checkbox" name="services" value="Tire Change" /> Tire Change</label>
+          <label class="checkbox-label"><input type="checkbox" name="services" value="Jump Start" /> Jump Start</label>
+          <label class="checkbox-label"><input type="checkbox" name="services" value="Fuel Delivery" /> Fuel Delivery</label>
+          <label class="checkbox-label"><input type="checkbox" name="services" value="Lockout" /> Lockout Service</label>
+          <label class="checkbox-label"><input type="checkbox" name="services" value="Tow Truck" /> Tow Truck</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tell Us About Yourself (optional)</label>
+        <textarea name="message" placeholder="Years of experience, equipment you have, anything else..." rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;font-size:1.1rem;padding:16px;">Apply Now →</button>
+    </form>
   </div>
 </section>
 
